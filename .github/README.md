@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="../.github/assets/uberduck-logo.png" alt="Uberduck Logo">
+    <img src="https://raw.githubusercontent.com/ImNimboss/uberduck/main/.github/assets/uberduck-logo.png" alt="Uberduck Logo">
 </p>
 
 # Uberduck
@@ -72,3 +72,9 @@ Check [Documentation/Basics.md](https://github.com/ImNimboss/uberduck/blob/maste
 ## Examples
 
 Check [Documentation/Examples.md](https://github.com/ImNimboss/uberduck/blob/master/Documentation/Examples.md).
+
+## Some credits
+
+The idea to implement logging in this library came from [discord.py](https://github.com/Rapptz/discord.py).
+
+The idea to use the `polling` library came from [CupOfGeo/UberDuckAPI](https://github.com/CupOfGeo/UberDuckAPI), another uberduck.ai API wrapper.
