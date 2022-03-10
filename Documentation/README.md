@@ -1,0 +1,1 @@
+## Hi! If you're new you should start with [the basics](https://github.com/ImNimboss/uberduck/blob/main/Documentation/Basics.md).
