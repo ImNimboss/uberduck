@@ -46,7 +46,7 @@ async def speak(ctx, voice, *, speech):
         return await ctx.reply('Invalid voice, please do `!voices` to see all the voices.')
 
     await ctx.send('Loading...')
-    async with ctx.channel.trigger_typing():
+    async with ctx.typing():
         try:
             result = await uberduck_client.speak_async(speech, voice, check_every = 0.5)
             file = discord.File(
