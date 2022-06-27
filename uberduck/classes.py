@@ -40,13 +40,16 @@ class Voice:
     Attributes:
         `architecture (str)`: The architecture of the voice i.e. the engine that was used to make the voice.
         `category (str)`: The category of the voice i.e. where it's from (WWE, SpongeBob etc).
+        `contributors (list)`: The contributors' names of the voice.
         `controls (bool)`: Whether the voice has controls.
         `display_name (str)`: The display name of the voice i.e. a better formatted name to show to general users.
-        `name (str)`: The name of the voice i.e. the name you pass to the API in order for it to recognize which voice you want.
+        `is_active (bool)`: Whether the voice is active.
         `model_id (str)`: The model ID of the voice. This is not a unique identification, the name is.
         `memberships (list)`: The memberships of the voice.
         `is_private (bool)`: Whether the voice is private.
-        `contributors (list)`: The contributors' names of the voice.
+        `name (str)`: The name of the voice i.e. the name you pass to the API in order for it to recognize which voice you want.
+        `symbol_set (str)`: The symbol set of the voice.
+        `voicemodel_uuid (str)`: The voice model's UUID.
 
     Magic methods:
         `__str__`: Returns a string representation of the Voice object in the format `Voice: Architecture - {architecture}, Category - {category}, Controls - {controls}, Display Name - {display_name}, Name - {name}, Model ID - {model_id}, Memberships - {memberships}, Is Private - {is_private}, Contributors - {contributors}`.
@@ -58,31 +61,37 @@ class Voice:
         self,
         architecture: str,
         category: str,
+        contributors: List[str],
         controls: bool,
         display_name: str,
-        name: str,
+        is_active: bool,
         model_id: str,
         memberships: list,
         is_private: bool,
-        contributors: List[str]
+        name: str,
+        symbol_set: str,
+        voicemodel_uuid: str
     ) -> None:
         self.architecture = architecture
         self.category = category
+        self.contributors = contributors
         self.controls = controls
         self.display_name = display_name
-        self.name = name
+        self.is_active = is_active
         self.model_id = model_id
         self.memberships = memberships
         if self.memberships:
             self.memberships: List[Membership] = [Membership(*memberships)]
         self.is_private = is_private
-        self.contributors = contributors
+        self.name = name
+        self.symbol_set = symbol_set
+        self.voicemodel_uuid = voicemodel_uuid
 
     def __str__(self):
-        return f'Voice: Architecture - {self.architecture}, Category - {self.category}, Controls - {self.controls}, Display Name - {self.display_name}, Name - {self.name}, Model ID - {self.model_id}, Memberships - {self.memberships}, Is Private - {self.is_private}, Contributors - {self.contributors}'
+        return f'Voice: Architecture - {self.architecture}, Category - {self.category}, Contributors - {self.contributors}, Controls - {self.controls}, Display Name - {self.display_name}, Is Active - {self.is_active},  Model ID - {self.model_id}, Memberships - {self.memberships}, Is Private - {self.is_private}, Name - {self.name}, Symbol Set - {self.symbol_set}, Voice model UUID - {self.voicemodel_uuid}'
 
     def __repr__(self):
-        return f'<Voice architecture=\'{self.architecture}\' category=\'{self.category}\' controls=\'{self.controls}\' display_name=\'{self.display_name}\' name=\'{self.name}\' model_id=\'{self.model_id}\' memberships=\'{self.memberships}\' is_private=\'{self.is_private}\' contributors=\'{self.contributors}\'>'
+        return f'<Voice architecture=\'{self.architecture}\' category=\'{self.category}\' contributors=\'{self.contributors}\' controls=\'{self.controls}\' display_name=\'{self.display_name}\' is_active=\'{self.is_active}\' model_id=\'{self.model_id}\' memberships=\'{self.memberships}\' is_private=\'{self.is_private}\' name=\'{self.name}\' symbol_set=\'{self.symbol_set}\' voicemodel_uuid=\'{self.voicemodel_uuid}\'>'
 
 class UberduckException(Exception):
     """

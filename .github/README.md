@@ -78,3 +78,8 @@ Check [Documentation/Examples.md](https://github.com/ImNimboss/uberduck/blob/mas
 The idea to implement logging in this library came from [discord.py](https://github.com/Rapptz/discord.py).
 
 The idea to use the `polling` library came from [CupOfGeo/UberDuckAPI](https://github.com/CupOfGeo/UberDuckAPI), another uberduck.ai API wrapper.
+
+## Changelog
+
+* `v0.0.1` - Initial release.
+* `v0.0.2` - Fixed `get_voices()` and `get_voices_async()` by updating the `Voice` class to be compatible with the new voice data available from the API.
