@@ -18,7 +18,7 @@ setup(
     long_description = long_description,
     long_description_content_type = 'text/markdown',
     author = 'ImNimboss',
-    author_email = 'contact@nimboss.me',
+    author_email = 'nim@nimboss.me',
     url = 'https://github.com/ImNimboss/uberduck',
     license = 'MIT',
     packages = ['uberduck'],
