@@ -1,6 +1,6 @@
 from setuptools import setup
 
-with open('.github/README.md') as file:
+with open('README.md') as file:
     long_description = file.read()
 
 with open('uberduck/__init__.py') as file:
