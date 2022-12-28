@@ -83,3 +83,4 @@ The idea to use the `polling` library came from [CupOfGeo/UberDuckAPI](https://g
 
 * `v0.0.1` - Initial release.
 * `v0.0.2` - Fixed `get_voices()` and `get_voices_async()` by updating the `Voice` class to be compatible with the new voice data available from the API.
+* `v0.0.3` - Moved `README.md` from `.github` to root folder due to compatibility issues with other software
