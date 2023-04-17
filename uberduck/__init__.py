@@ -15,7 +15,7 @@ import logging as _logging
 
 __author__: str = 'ImNimboss'
 __license__: str = 'MIT'
-__version__: str = '0.0.3'
+__version__: str = '0.0.4'
 GITHUB: str = 'https://github.com/ImNimboss/uberduck'
 ISSUE_TRACKER: str = 'https://github.com/ImNimboss/uberduck/issues'
 DOCUMENTATION: str = 'https://github.com/ImNimboss/uberduck/tree/main/Documentation'
