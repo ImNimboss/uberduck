@@ -50,11 +50,17 @@ class Voice:
         `name (str)`: The name of the voice i.e. the name you pass to the API in order for it to recognize which voice you want.
         `symbol_set (str)`: The symbol set of the voice.
         `voicemodel_uuid (str)`: The voice model's UUID.
+        `added_at (str)`: The date the model was added at.
+        `is_primary: (str)`: Whether the voice is added to the Uberduck.ai site.
+        `hifi_gan_vocoder: (str)`: The HIFI-gan vocoder used to improve the voice.
+        `ml_model_id: (str)`: The ID of the machine learning model.
+        `speaker_id: (str)`: The ID of the person doing the voice.
+        `language: (str)`: The language the voice was trained for.
 
     Magic methods:
-        `__str__`: Returns a string representation of the Voice object in the format `Voice: Architecture - {architecture}, Category - {category}, Controls - {controls}, Display Name - {display_name}, Name - {name}, Model ID - {model_id}, Memberships - {memberships}, Is Private - {is_private}, Contributors - {contributors}`.
-        `__repr__`: Returns a string representation of the Voice object in the format `<Voice architecture='{architecture}' category='{category}' controls='{controls}' display_name='{display_name}' name='{name}' model_id='{model_id}' memberships='{memberships}' is_private='{is_private}' contributors='{contributors}'>`.
-    
+        `__str__`: Returns a string representation of the Voice object in the format `Voice: Architecture - {architecture}, Category - {category}, Contributors - {contributors}, Controls - {controls}, Display Name - {display_name}, Is Active - {is_active},  Model ID - {model_id}, Memberships - {memberships}, Is Private - {is_private}, Name - {name}, Symbol Set - {symbol_set}, Voice model UUID - {voicemodel_uuid}, Added At - {added_at}, Is Primary - {is_primary}, Hifi Gan Vocoder - {hifi_gan_vocoder}, ML Model ID - {ml_model_id}, Speaker ID - {speaker_id}, Language {language}`.
+        `__repr__`: Returns a string representation of the Voice object in the format `<Voice architecture='{architecture}' category='{category}' contributors='{contributors}' controls='{controls}' display_name='{display_name}' is_active='{is_active}' model_id='{model_id}' memberships='{memberships}' is_private='{is_private}' name='{name}' symbol_set='{symbol_set}' voicemodel_uuid='{voicemodel_uuid}' added_at='{added_at}' is_primary='{is_primary}' hifi_gan_vocoder='{hifi_gan_vocoder}' ml_model_id='{ml_model_id}' speaker_id='{speaker_id}' language='{language}'>`.
+
     This class is read-only.
     """
     def __init__(
@@ -70,7 +76,13 @@ class Voice:
         is_private: bool,
         name: str,
         symbol_set: str,
-        voicemodel_uuid: str
+        voicemodel_uuid: str,
+        added_at: str,
+        is_primary: str,
+        hifi_gan_vocoder: str,
+        ml_model_id: str,
+        speaker_id: str,
+        language: str
     ) -> None:
         self.architecture = architecture
         self.category = category
@@ -86,12 +98,18 @@ class Voice:
         self.name = name
         self.symbol_set = symbol_set
         self.voicemodel_uuid = voicemodel_uuid
+        self.added_at = added_at
+        self.is_primary = is_primary
+        self.hifi_gan_vocoder = hifi_gan_vocoder
+        self.ml_model_id = ml_model_id
+        self.speaker_id = speaker_id
+        self.language = language
 
     def __str__(self):
-        return f'Voice: Architecture - {self.architecture}, Category - {self.category}, Contributors - {self.contributors}, Controls - {self.controls}, Display Name - {self.display_name}, Is Active - {self.is_active},  Model ID - {self.model_id}, Memberships - {self.memberships}, Is Private - {self.is_private}, Name - {self.name}, Symbol Set - {self.symbol_set}, Voice model UUID - {self.voicemodel_uuid}'
+        return f'Voice: Architecture - {self.architecture}, Category - {self.category}, Contributors - {self.contributors}, Controls - {self.controls}, Display Name - {self.display_name}, Is Active - {self.is_active},  Model ID - {self.model_id}, Memberships - {self.memberships}, Is Private - {self.is_private}, Name - {self.name}, Symbol Set - {self.symbol_set}, Voice model UUID - {self.voicemodel_uuid}, Added At - {self.added_at}, Is Primary - {self.is_primary}, Hifi Gan Vocoder - {self.hifi_gan_vocoder}, ML Model ID - {self.ml_model_id}, Speaker ID - {self.speaker_id}, Language {self.language}'
 
     def __repr__(self):
-        return f'<Voice architecture=\'{self.architecture}\' category=\'{self.category}\' contributors=\'{self.contributors}\' controls=\'{self.controls}\' display_name=\'{self.display_name}\' is_active=\'{self.is_active}\' model_id=\'{self.model_id}\' memberships=\'{self.memberships}\' is_private=\'{self.is_private}\' name=\'{self.name}\' symbol_set=\'{self.symbol_set}\' voicemodel_uuid=\'{self.voicemodel_uuid}\'>'
+        return f'<Voice architecture=\'{self.architecture}\' category=\'{self.category}\' contributors=\'{self.contributors}\' controls=\'{self.controls}\' display_name=\'{self.display_name}\' is_active=\'{self.is_active}\' model_id=\'{self.model_id}\' memberships=\'{self.memberships}\' is_private=\'{self.is_private}\' name=\'{self.name}\' symbol_set=\'{self.symbol_set}\' voicemodel_uuid=\'{self.voicemodel_uuid}\' added_at=\'{self.added_at}\' is_primary=\'{self.is_primary}\' hifi_gan_vocoder=\'{self.hifi_gan_vocoder}\' ml_model_id=\'{self.ml_model_id}\' speaker_id=\'{self.speaker_id}\' language=\'{self.language}\'>'
 
 class UberduckException(Exception):
     """
