@@ -7,7 +7,8 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
-from typing import List
+from typing import List, Optional
+from datetime import datetime as dt
 
 class Membership:
     """
@@ -50,11 +51,11 @@ class Voice:
         `name (str)`: The name of the voice i.e. the name you pass to the API in order for it to recognize which voice you want.
         `symbol_set (str)`: The symbol set of the voice.
         `voicemodel_uuid (str)`: The voice model's UUID.
-        `added_at (str)`: The date the model was added at.
-        `is_primary: (str)`: Whether the voice is added to the Uberduck.ai site.
+        `added_at (datetime)`: The date and time the model was added at.
+        `is_primary: (bool)`: Whether the voice is added to the Uberduck.ai site.
         `hifi_gan_vocoder: (str)`: The HIFI-gan vocoder used to improve the voice.
-        `ml_model_id: (str)`: The ID of the machine learning model.
-        `speaker_id: (str)`: The ID of the person doing the voice.
+        `ml_model_id: (int)`: The ID of the machine learning model.
+        `speaker_id: (int)`: The ID of the person doing the voice.
         `language: (str)`: The language the voice was trained for.
 
     Magic methods:
@@ -77,11 +78,11 @@ class Voice:
         name: str,
         symbol_set: str,
         voicemodel_uuid: str,
-        added_at: str,
-        is_primary: str,
+        added_at: float,
+        is_primary: bool,
         hifi_gan_vocoder: str,
-        ml_model_id: str,
-        speaker_id: str,
+        ml_model_id: int,
+        speaker_id: Optional[int],
         language: str
     ) -> None:
         self.architecture = architecture
@@ -98,7 +99,7 @@ class Voice:
         self.name = name
         self.symbol_set = symbol_set
         self.voicemodel_uuid = voicemodel_uuid
-        self.added_at = added_at
+        self.added_at: dt = dt.fromtimestamp(added_at)
         self.is_primary = is_primary
         self.hifi_gan_vocoder = hifi_gan_vocoder
         self.ml_model_id = ml_model_id
@@ -106,10 +107,11 @@ class Voice:
         self.language = language
 
     def __str__(self):
-        return f'Voice: Architecture - {self.architecture}, Category - {self.category}, Contributors - {self.contributors}, Controls - {self.controls}, Display Name - {self.display_name}, Is Active - {self.is_active},  Model ID - {self.model_id}, Memberships - {self.memberships}, Is Private - {self.is_private}, Name - {self.name}, Symbol Set - {self.symbol_set}, Voice model UUID - {self.voicemodel_uuid}, Added At - {self.added_at}, Is Primary - {self.is_primary}, Hifi Gan Vocoder - {self.hifi_gan_vocoder}, ML Model ID - {self.ml_model_id}, Speaker ID - {self.speaker_id}, Language {self.language}'
+        time = self.added_at.strftime('%a, %B %d %Y, %I:%M:%S %p UTC')
+        return f'Voice: Architecture - {self.architecture}, Category - {self.category}, Contributors - {self.contributors}, Controls - {self.controls}, Display Name - {self.display_name}, Is Active - {self.is_active},  Model ID - {self.model_id}, Memberships - {self.memberships}, Is Private - {self.is_private}, Name - {self.name}, Symbol Set - {self.symbol_set}, Voice model UUID - {self.voicemodel_uuid}, Added At - {time}, Is Primary - {self.is_primary}, Hifi Gan Vocoder - {self.hifi_gan_vocoder}, ML Model ID - {self.ml_model_id}, Speaker ID - {self.speaker_id}, Language {self.language}'
 
     def __repr__(self):
-        return f'<Voice architecture=\'{self.architecture}\' category=\'{self.category}\' contributors=\'{self.contributors}\' controls=\'{self.controls}\' display_name=\'{self.display_name}\' is_active=\'{self.is_active}\' model_id=\'{self.model_id}\' memberships=\'{self.memberships}\' is_private=\'{self.is_private}\' name=\'{self.name}\' symbol_set=\'{self.symbol_set}\' voicemodel_uuid=\'{self.voicemodel_uuid}\' added_at=\'{self.added_at}\' is_primary=\'{self.is_primary}\' hifi_gan_vocoder=\'{self.hifi_gan_vocoder}\' ml_model_id=\'{self.ml_model_id}\' speaker_id=\'{self.speaker_id}\' language=\'{self.language}\'>'
+        return f'<Voice architecture=\'{self.architecture}\' category=\'{self.category}\' contributors=\'{self.contributors}\' controls=\'{self.controls}\' display_name=\'{self.display_name}\' is_active=\'{self.is_active}\' model_id=\'{self.model_id}\' memberships=\'{self.memberships}\' is_private=\'{self.is_private}\' name=\'{self.name}\' symbol_set=\'{self.symbol_set}\' voicemodel_uuid=\'{self.voicemodel_uuid}\' added_at=\'{dt.timestamp(self.added_at)}\' is_primary=\'{self.is_primary}\' hifi_gan_vocoder=\'{self.hifi_gan_vocoder}\' ml_model_id=\'{self.ml_model_id}\' speaker_id=\'{self.speaker_id}\' language=\'{self.language}\'>'
 
 class UberduckException(Exception):
     """
