@@ -1,4 +1,5 @@
 from setuptools import setup
+from sys import version_info
 
 with open('README.md') as file:
     long_description = file.read()
@@ -10,6 +11,12 @@ for line in lines:
     if line.startswith('__version__: str = '):
         version = line[20:-2]
         break
+
+dependencies = [
+    'requests', 'aiohttp', 'polling', 'pydub', 'simpleaudio'
+]
+if version_info < (3,8):
+    dependencies.append('typing_extensions')
 
 setup(
     name = 'uberduck',
@@ -26,7 +33,7 @@ setup(
         'uberduck', 'wrapper', 'api', 'text-to-speech', 'async', 'famous',
         'tts', 'texttospeech', 'AI', 'api-wrapper', 'api-key', 'api-secret'
     ],
-    install_requires = ['requests', 'aiohttp', 'polling', 'pydub'],
+    install_requires = dependencies,
     classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',

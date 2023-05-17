@@ -10,7 +10,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 from requests import post, get
 from aiohttp import request, BasicAuth
 from asyncio import get_event_loop, AbstractEventLoop
-from typing import Union, Literal, Optional, List
+from typing import Union, Optional, List
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 from uberduck.classes import *
 from polling import poll
 from pydub import AudioSegment
